@@ -11,17 +11,18 @@ void dfs(Node*root) {
 	if(visited.count(root->val)) {
 		//already visited
 		return;
+	}
+
+	visited[root->val] = 1;
+
+	//process current node here
+	// …
+	for(int i = 0; i < root->children.size(); i++) {
+		dfs(root->children[i]);
+	}
+	return;
 }
 
-visited[root->val] = 1;
-
-//process current node here
-// …
-for(int i = 0; i < root->children.size(); i++) {
-	dfs(root->children[i]);
-}
-return;
-}
 特点：不会将当前子节点几访问完，而是对于任意一个节点一直下探直到叶节点。
 广度优先遍历 – 队列 – 最短路径:每层节点先进入队列，然后将队列中节点弹出后将子节点进入队列。
 =>模板：
@@ -29,7 +30,7 @@ void bfs(Node* root) {
 	map<int, int> visited;
 	if(!root) return;
 	
-queue<Node*> queueNode;
+	queue<Node*> queueNode;
 	queueNode.push(root);
 
 	while(!queueNode.empty()) {
@@ -40,9 +41,9 @@ queue<Node*> queueNode;
 		
 		for(int i = 0; i < node->children.size(); i++) {
 			queueNode.push(node.children[i]);
-}
-return;
-}
+		}
+	}
+	return;
 }
 
 贪心算法：一种在每一步选择中选择最优结果，最终导致全局最佳的方法。
@@ -66,8 +67,8 @@ int binarySearch(const vector<int>& nums, int target) {
 		if(nums[mid] == target) return mid;
 		else if(nums[mid] < target) left = mid + 1;
 		else right = mid – 1;
-}
-return -1;
+	}
+	return -1;
 }
 
 牛顿迭代法： 迭代过程中以直线代替曲线，用一阶泰勒展开式代替原曲线，求直线与x轴的交点，重复该过程直到收敛。f(x) – f(x0) = f’(x0)(x – x0)
