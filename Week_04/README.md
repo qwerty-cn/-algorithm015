@@ -5,7 +5,7 @@
 =>模板：
 map<int, int> visited;
 void dfs(Node*root) {
-	//terminator
+        //terminator
 	if(!root) return;
 	
 	if(visited.count(root->val)) {
@@ -26,6 +26,7 @@ void dfs(Node*root) {
 特点：不会将当前子节点几访问完，而是对于任意一个节点一直下探直到叶节点。
 广度优先遍历 – 队列 – 最短路径:每层节点先进入队列，然后将队列中节点弹出后将子节点进入队列。
 =>模板：
+
 void bfs(Node* root) {
 	map<int, int> visited;
 	if(!root) return;
